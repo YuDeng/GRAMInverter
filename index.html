@@ -7,7 +7,7 @@
 
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-    <title>GRAM</title>
+    <title>GRAMInverter</title>
 
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -27,9 +27,9 @@
         <div class="row">
             <h1 class="col-md-20 text-center">
                 <br></br>
-                <b>GRAM</b>: Generative Radiance Manifolds for 3D-Aware Image Generation<br>
+                Learning Detailed Radiance Manifolds for High-Fidelity and 3D-Consistent Portrait Synthesis from Monocular Image<br>
                 <small>
-                    CVPR 2022 (Oral Presentation)
+                    Arxiv 2022
                 </small>
             </h1>
             <hr style="margin-top:0px">
@@ -41,44 +41,22 @@
                         <a href="https://YuDeng.github.io/" style="font-size: 16px;">
                             Yu Deng
                         </a>
-                        <sup>1</sup>
                     </li>
                     <li>
-                        <a href="https://jlyang.org/" style="font-size: 16px;">
-                            Jiaolong Yang
+                        <a href="https://sites.google.com/site/zjuwby/?pli=1" style="font-size: 16px;">
+                            Baoyuan Wang
                         </a>
-                        <sup>2</sup>
                     </li>
                     <li>
-                        <a style="font-size: 16px;">
-                            Jianfeng Xiang
+                        <a href="https://scholar.google.com.hk/citations?user=9akH-n8AAAAJ&hl=en" style="font-size: 16px;">
+                            Heung-Yeung Shum
                         </a>
-                        <sup>3</sup>
                     </li>
-                    <li>
-                        <a href="http://www.xtong.info/" style="font-size: 16px;">
-                            Xin Tong
-                        </a>
-                        <sup>2</sup>
-                    </li><br>
                     <a></a><br>
+                    <br>
                     <li>
-                        <sup>1</sup>
-                        <a href="https://www.tsinghua.edu.cn/en/" style="font-size: 16px;">
-                            Tsinghua Unviersity
-                        </a>
-                    </li>
-                    <li>
-                        <sup>2</sup>
-                        <a href="https://www.microsoft.com/en-us/research/lab/microsoft-research-asia/"
-                            style="font-size: 16px;">
-                            Microsoft Research Asia
-                        </a>
-                    </li>
-                    <li>
-                        <sup>3</sup>
-                        <a href="http://en.ustc.edu.cn/" style="font-size: 16px;">
-                            University of Science and Technology of China
+                        <a href="https://www.xiaoice.com/" style="font-size: 16px;">
+                            Xiaobing.AI
                         </a>
                     </li>
                 </ul>
@@ -98,9 +76,9 @@
 
                     <li>
 <!--                         <a onClick="alert('Code coming soon!\nContact dengyu2008@hotmail.com for more details.')"> -->
-                        <a href="https://github.com/microsoft/GRAM">
+                        <a >
                             <img src="./files/github.png" height="60px">
-                            <h4><strong>Code</strong></h4>
+                            <h4><strong>Code (coming soon)</strong></h4>
                         </a>
                     </li>
                 </ul>
@@ -110,7 +88,7 @@
         <div class="row">
             <div class="col-md-12 col-md-offset-0 text-center">
                 <a>
-                    <video style="width:100%;height:100%;" playsinline autoplay loop preload muted>
+                    <video style="width:97%;height:97%;" playsinline autoplay loop preload muted>
                         <source src="./files/teaser.mp4" type="video/mp4">
                     </video>
                 </a>
@@ -120,27 +98,18 @@
                 </h2>
                 <hr style="margin-top:0px">
                 <p class="text-justify" style="font-size: 16px;">
-                    3D-aware image generative modeling aims to generate
-                    3D-consistent images with explicitly controllable camera
-                    poses. Recent works have shown promising results by training
-                    neural radiance field (NeRF) generators on unstructured
-                    2D image collections, but they still can not generate
-                    highly-realistic images with fine details. A critical reason
-                    is that the high memory and computation cost of volumetric
-                    representation learning greatly restricts the number of point
-                    samples for radiance integration during training. Deficient
-                    point sampling not only limits the expressive power of the
-                    generator to handle high-frequency details but also impedes
-                    effective GAN training due to the noise caused by unstable
-                    Monte Carlo sampling. We propose a novel approach that
-                    regulates point sampling and radiance field learning on 2D
-                    manifolds, embodied as a set of implicit surfaces in the 3D
-                    volume learned with GAN training. For each viewing ray,
-                    we calculate the ray-surface intersections and accumulate
-                    their radiance predicted by the network. We show that by
-                    training and rendering such radiance manifolds, our generator
-                    can produce high quality images with realistic fine
-                    details and strong visual 3D consistency.
+                    A key challenge for novel view synthesis of monocular portrait images is 3D consistency under continuous pose variations. 
+                    Most existing methods rely on 2D generative models which often leads to obvious 3D inconsistency artifacts. 
+                    We present a 3D-consistent novel view synthesis approach for monocular portrait images based on a recent 
+                    proposed 3D-aware GAN, namely Generative Radiance Manifolds (GRAM), which has shown 
+                    strong 3D consistency at multiview image generation of virtual subjects via the radiance manifolds representation. 
+                    However, simply learning an encoder to map a real image into the latent space of GRAM can only reconstruct coarse 
+                    radiance manifolds without faithful fine details, while improving the reconstruction fidelity via instance-specific 
+                    optimization is time-consuming. We introduce a novel detail manifolds reconstructor to learn 3D-consistent fine 
+                    details on the radiance manifolds from monocular images, and combine them with the coarse radiance manifolds for 
+                    high-fidelity reconstruction. The 3D priors derived from the coarse radiance manifolds are used to regulate the 
+                    learned details to ensure reasonable synthesized results at novel views. Trained on in-the-wild 2D images, our method 
+                    achieves high-fidelity and 3D-consistent portrait synthesis largely outperforming the prior art. 
                 </p>
             </div>
         </div>
@@ -170,12 +139,11 @@
                 <hr style="margin-top:0px">
                 <img src="./files/framework.png" class="img-responsive" alt="overview"><br>
                 <p class="text-justify" style="font-size: 16px;">
-                    Overview of the GRAM method. The generator G consists of a manifold predictor M and a radiance
-                    generator Φ. M predicts
-                    multiple isosurfaces which define the input domain of Φ. The intersections between camera rays and
-                    the isosurfaces are
-                    sent to Φ for color and occupancy prediction. Images are then generated by compositing the color of
-                    the points along the ray.
+                    Overview of our method. An input portrait image goes through two stages to obtain the final radiance manifolds 
+                    for novel view synthesis. The first general inversion stage maps the input image to the latent space of a 
+                    pre-trained efficient GRAM to obtain coarse radiance manifolds. The second detail-specific stage then extracts 
+                    detail feature manifolds from the input image and combines them with the coarse results for high-fidelity image 
+                    synthesis. See the paper for more details.
                 </p>
             </div>
         </div>
@@ -186,25 +154,41 @@
             <div class="col-md-12 col-md-offset-0 text-center">
                 <br></br>
                 <h2>
-                    Generation Results
+                    Novel View Synthesis
                 </h2>
                 <hr style="margin-top:0px">
                 <p class="text-justify" style="font-size: 16px;">
-                    GRAM is able to generate high-quality images with fine details. Moreover, it allows an explicit
-                    control of camera viewpoint and achieves highly consistent results across different views.
-                    It even maintains strong visual 3D consistency for very thin structures such as bangs of hair,
-                    eyeglass, and whiskers of cat.
+                Novel view synthesis on CelebA-HQ. Our method can generate novel views of a portrait image with high-fidelity and 
+                strong 3D-consistency via single forward pass.
                 </p>
                 <video style="width:100%;height:100%;" playsinline autoplay loop preload muted>
-                    <source src="./files/result.mp4" type="video/mp4">
+                    <source src="./files/more_result.mp4" type="video/mp4">
                 </video>
+                <br></br>
                 <hr style="margin-top:0px">
                 <p class="text-justify" style="font-size: 16px;">
-                    GRAM achieves the best visual quality with realistic details and remarkable 3D consistency on
-                    multiple datasets comparing with previous 3D-aware image generation methods.
+                    Comparison with existing face editing methods. Our method faithfully reconstructs the given image and achieves better
+                    3D-consistency under pose variations.
+                    </p>
+                    <video style="width:97%;height:97%;" playsinline autoplay loop preload muted>
+                        <source src="./files/compare.mp4" type="video/mp4">
+                    </video>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 col-md-offset-0 text-center">
+                <br></br>
+                <h2>
+                    Dolly Zoom Effect
+                </h2>
+                <hr style="margin-top:0px">
+                <p class="text-justify" style="font-size: 16px;">
+                    Our method achieves dolly zoom effect of a portrait image by explicitly adjusting the camera position and fov, 
+                    thanks to the underlying 3D representation.
                 </p>
                 <video style="width:100%;height:100%;" playsinline autoplay loop preload muted>
-                    <source src="./files/compare.mp4" type="video/mp4">
+                    <source src="./files/zoom.mp4" type="video/mp4">
                 </video>
             </div>
         </div>
@@ -213,90 +197,20 @@
             <div class="col-md-12 col-md-offset-0 text-center">
                 <br></br>
                 <h2>
-                    Manifolds Visualization
+                    3D-Consistent Editing
                 </h2>
                 <hr style="margin-top:0px">
                 <p class="text-justify" style="font-size: 16px;">
-                    GRAM constrains point sampling and radiance field learning on 2D manifolds, embodied as a set of
-                    implicit surfaces. These implicit surfaces are shared for the trained object category, jointly
-                    learned with GAN training, and fixed at inference time.
-                </p>
-                <video style="width:93%;height:93%;" playsinline autoplay loop preload muted>
-                    <source src="./files/manifold.mp4" type="video/mp4">
-                </video>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-12 col-md-offset-0 text-center">
-                <br></br>
-                <h2>
-                    3D Geometry Visualization
-                </h2>
-                <hr style="margin-top:0px">
-                <p class="text-justify" style="font-size: 16px;">
-                    Although GRAM confines the input domain of the radiance field on 2D manifolds, we can still extract
-                    proxy 3D shapes of the generated objects using the volume-based marching cubes algorithm. It can be
-                    observed that GRAM produces high-quality geometry with detailed structures well depicted, which is
-                    the key to achieve strong visual
-                    3D consistency across different views.
+                    Our method can also be applied to 3D-consistent interactive portrait editing due to its ability
+                    to preserve fine image details.
                 </p>
                 <video style="width:100%;height:100%;" playsinline autoplay loop preload muted>
-                    <source src="./files/shape.mp4" type="video/mp4">
+                    <source src="./files/edit.mp4" type="video/mp4">
                 </video>
             </div>
         </div>
 
-<!--         <div class="row">
-            <div class="col-md-12 col-md-offset-0 text-center">
-                <br></br>
-                <h2>
-                    Image Embedding and Editing
-                </h2>
-                <hr style="margin-top:0px">
-                <p class="text-justify" style="font-size: 16px;">
-                GAN inversion is naturally supported by GRAM. Given an input image, we can first embed it into the learned latent space and then freely move the camera viewpoint to synthesize images at novel views.
-                </p>
-                <video style="width:67%;height:67%;" playsinline autoplay loop preload muted>
-                    <source src="./files/inv2.mp4" type="video/mp4">
-                </video>
-            </div>
-        </div> -->
 
-        <div class="row">
-            <div class="col-md-12 col-md-offset-0 text-center">
-                <br></br>
-                <h2>
-                    Responsible AI Considerations
-                </h2>
-                <hr style="margin-top:0px">
-                <p class="text-justify" style="font-size: 16px;">
-                    The goal of this paper is to study generative modelling of the 3D objects from 2D images, 
-                    and to provide a method for generating multi-view images of non-existing, virtual objects. 
-                    It is not intended to manipulate existing images nor to create content that is used to mislead or deceive. 
-                    This method does not have understanding and control of the generated content. 
-                    Thus, adding targeted facial expressions or mouth movements is out of the scope of this work. 
-                    However, the method, like all other related AI image generation techniques, 
-                    could still potentially be misused for impersonating humans. Currently, 
-                    the images generated by this method contain visual artifacts, unnatural texture patterns, 
-                    and other unpredictable failures that can be spotted by humans and fake image detection algorithms. 
-                    We also plan to investigate applying this technology for advancing 3D- and video-based forgery detection.  
-                </p>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-12 col-md-offset-0 text-center">
-                <br></br>
-                <h2>
-                    Availability of Software
-                </h2>
-                <hr style="margin-top:0px">
-                <p class="text-justify" style="font-size: 16px;">
-                    Per concerns about misuse of this method, the code is available for use under a <a href="https://github.com/microsoft/GRAM/blob/main/GRAM-Microsoft%20Research%20License%20Agreement.pdf">research-only license</a>. 
-                </p>
-            </div>
-        </div>
 
         <div class="row">
             <div class="col-md-12 col-md-offset-0">
@@ -336,13 +250,13 @@
                                             </div>
                                             <div class="CodeMirror-code" style="">
                                                 <pre
-                                                    class=" CodeMirror-line "><span style="padding-right: 0.1px;">@inproceedings{deng2022gram,</span></pre>
+                                                    class=" CodeMirror-line "><span style="padding-right: 0.1px;">@article{deng2022learning,</span></pre>
                                                 <pre
-                                                    class=" CodeMirror-line "><span style="padding-right: 0.1px;"> &nbsp;  title={GRAM: Generative Radiance Manifolds for 3D-Aware Image Generation},</span></pre>
+                                                    class=" CodeMirror-line "><span style="padding-right: 0.1px;"> &nbsp;  title={Learning Detailed Radiance Manifolds for High-Fidelity and 3D-Consistent Portrait Synthesis from Monocular Image},</span></pre>
                                                 <pre
-                                                    class=" CodeMirror-line "><span style="padding-right: 0.1px;"> &nbsp;  author={Deng, Yu and Yang, Jiaolong and Xiang, Jianfeng and Tong, Xin},</span></pre>
+                                                    class=" CodeMirror-line "><span style="padding-right: 0.1px;"> &nbsp;  author={Deng, Yu and Wang, Baoyuan and Shum, Heung-Yeung},</span></pre>
                                                 <pre
-                                                    class=" CodeMirror-line "><span style="padding-right: 0.1px;"> &nbsp;  booktitle={IEEE/CVF Conference on Computer Vision and Pattern Recognition},</span></pre>
+                                                    class=" CodeMirror-line "><span style="padding-right: 0.1px;"> &nbsp;  journal={arXiv preprint arXiv:},</span></pre>
                                                 <pre
                                                     class=" CodeMirror-line "><span style="padding-right: 0.1px;"> &nbsp;  year={2022}</span></pre>
                                                 <pre
@@ -368,8 +282,8 @@
                 </h2>
                 <hr style="margin-top:0px">
                 <p class="text-justify" style="font-size: 16px;">
-                    We thank Harry Shum for the fruitful advice and discussion to improve the paper. <br>
-                    The website template was adapted from <a href="https://jonbarron.info/mipnerf/">Mip-NeRF</a>.
+                    We thank Xingyu Chen for the discussion to improve the paper. <br>
+                    The website template was adapted from <a href="https://yudeng.github.io/GRAM/">GRAM</a>.
                 </p>
             </div>
         </div>
